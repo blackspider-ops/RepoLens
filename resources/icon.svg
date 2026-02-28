@@ -1,0 +1,13 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="128" height="128" fill="#1e1e1e" rx="16"/>
+  
+  <!-- Magnifying glass circle -->
+  <circle cx="50" cy="50" r="28" fill="none" stroke="#58a6ff" stroke-width="6"/>
+  
+  <!-- Magnifying glass handle -->
+  <line x1="70" y1="70" x2="95" y2="95" stroke="#58a6ff" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Code brackets inside lens -->
+  <text x="50" y="60" font-family="monospace" font-size="32" fill="#58a6ff" text-anchor="middle" font-weight="bold">&lt;/&gt;</text>
+</svg>

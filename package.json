@@ -1,0 +1,92 @@
+{
+  "name": "repolens",
+  "displayName": "RepoLens",
+  "description": "Understand Before You Run - AI-powered GitHub repository analyzer",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "repolens",
+          "title": "RepoLens",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "repolens": [
+        {
+          "type": "webview",
+          "id": "repolens.sidebar",
+          "name": "RepoLens"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "repolens.analyzeCurrentRepo",
+        "title": "RepoLens: Analyze Current Repository"
+      }
+    ],
+    "configuration": {
+      "title": "RepoLens",
+      "properties": {
+        "repolens.apiProvider": {
+          "type": "string",
+          "enum": ["openai", "anthropic", "gemini"],
+          "default": "openai",
+          "description": "AI API provider to use (OpenAI, Anthropic Claude, or Google Gemini)"
+        },
+        "repolens.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API Key for your chosen AI provider"
+        },
+        "repolens.apiModel": {
+          "type": "string",
+          "default": "",
+          "description": "Model name (e.g., gpt-4o-mini, claude-3-5-sonnet-20241022, gemini-pro). Leave empty for default."
+        },
+        "repolens.defaultModel": {
+          "type": "string",
+          "default": "qwen2.5:1.5b",
+          "description": "Default Ollama model to use"
+        },
+        "repolens.enableOllama": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Ollama local AI provider"
+        },
+        "repolens.githubToken": {
+          "type": "string",
+          "default": "",
+          "description": "GitHub Personal Access Token (increases rate limit from 60 to 5,000 requests/hour)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.x",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.x",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}
